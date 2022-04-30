@@ -54,10 +54,10 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
             <Input
                 type={'number'}
                 text={'Orçamento do Projeto'}
-                name={'buget'}
+                name={'budget'}
                 placeholder={"Insira o Orçamento do projeto"}
                 handleOnChange={handleChange}
-                value={project.buget ? project.buget : ''}
+                value={project.budget ? project.budget : ''}
             />
             <Select
                 name='category_id'
