@@ -1,14 +1,21 @@
 {
   "projects": [
     {
-      "name": "Projeto",
-      "budget": "35476",
+      "name": "Projeto Editado 2",
+      "budget": "4100",
       "category": {
-        "id": "3",
-        "name": "Design"
+        "id": "4",
+        "name": "Planejamento"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 5,
+      "services": [
+        {
+          "name": "Serviço",
+          "cost": "5",
+          "description": "Cincão",
+          "id": "344ebc0e-0fd8-4ccd-9cc3-227912028517"
+        }
+      ],
       "id": 2
     }
   ],
