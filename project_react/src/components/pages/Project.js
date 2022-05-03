@@ -7,12 +7,15 @@ import Container from "../layuot/Container"
 import ProjectForm from "../pages/project/ProjectForm"
 import Message from "../layuot/Message"
 import ServiceForm from "../services/ServiceForm";
+import ServiceCard from "../services/ServiceCard";
 
 const Project = () => {
     const { id } = useParams()
     const [project, setProject] = useState([]);
+    const [services, setServices] = useState([]);
     const [message, setMessage] = useState();
     const [type, setType] = useState();
+
     useEffect(() => {
         fetch(`http://localhost:5000/projects/${id}`, {
             method: "GET",
@@ -23,6 +26,7 @@ const Project = () => {
             .then(res => res.json())
             .then((data) => {
                 setProject(data)
+                setServices(data.services)
             })
             .catch(err => console.log(err))
     }, [id])
@@ -49,6 +53,7 @@ const Project = () => {
             .then(res => res.json())
             .then((data) => {
                 setProject(data)
+                setServices(data.services)
                 setShowProjectForm(false)
                 //Mensagem
                 setMessage('Projeto Atualizado!')
@@ -64,6 +69,7 @@ const Project = () => {
         setShowServiceForm(!showServiceForm);
     }
     function createService(project) {
+        setMessage('');
         //Último serviço
 
         const lastService = project.services[project.services.length - 1]
@@ -92,11 +98,14 @@ const Project = () => {
             body: JSON.stringify(project)
         })
             .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
+            .then(() => {
+                setMessage('Serviço Adicionado!')
+                setType('success')
             })
             .catch((err) => console.log(err))
     }
+
+    function remove(service) { }
 
     return (
         <>
@@ -153,7 +162,18 @@ const Project = () => {
                         </div>
                         <h2>Serviços</h2>
                         <Container customClass="start">
-                            <p>Não há serviços em {project.name}</p>
+                            {services.length > 0 && services.map((service) =>
+                                <ServiceCard
+                                    key={service.id}
+                                    name={service.name}
+                                    description={service.description}
+                                    id={service.id}
+                                    handleRemove={remove}
+                                />)}
+                            {services.length === 0
+                                &&
+                                <p>Não há serviços em {project.name}</p>
+                            }
                         </Container>
                     </Container>
                 </div >
