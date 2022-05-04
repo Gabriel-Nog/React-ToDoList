@@ -7,51 +7,8 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 1007,
-      "services": [
-        {
-          "name": "Teste",
-          "cost": "200",
-          "description": "Um teste de serviço para o meu serviço",
-          "id": "feb7a9f2-58f3-45ef-946b-0cfaf6495ebb"
-        },
-        {
-          "name": "Mais Um",
-          "cost": "20",
-          "description": "Mais um",
-          "id": "27f63c27-3c92-4547-8943-bc7b0b2d2e0b"
-        },
-        {
-          "name": "Mais Um 2",
-          "cost": "200",
-          "description": "Mais um 2",
-          "id": "f260d33a-e940-4936-869b-195b0fc43c20"
-        },
-        {
-          "name": "Teste 3",
-          "cost": "200",
-          "description": "teste 3",
-          "id": "11531460-1442-43d2-b69a-7e6418e8c249"
-        },
-        {
-          "name": "Serviço",
-          "cost": "2",
-          "description": "dois",
-          "id": "5426359d-8b24-484d-b74a-2246b41e9a87"
-        },
-        {
-          "name": "Mais um 3",
-          "cost": "190",
-          "description": "mais um",
-          "id": "8175471a-679d-4fa2-8574-01ce377e5a5c"
-        },
-        {
-          "name": "Mais um 3",
-          "cost": "190",
-          "description": "mais um",
-          "id": "d9b5772d-297d-48b7-9645-9257434cf7de"
-        }
-      ],
+      "cost": 5,
+      "services": [],
       "id": 2
     }
   ],

@@ -101,11 +101,40 @@ const Project = () => {
             .then(() => {
                 setMessage('Serviço Adicionado!')
                 setType('success')
+                setShowServiceForm(false)
             })
             .catch((err) => console.log(err))
     }
 
-    function remove(service) { }
+    //Removendo Serviço
+    function remove(id, cost) {
+        setMessage('');
+        const serviceUpdate = project.services.filter((service) =>
+            service.id !== id
+        )
+
+        const projectUpdate = project
+
+        projectUpdate.services = serviceUpdate
+        projectUpdate.cost = parseFloat(projectUpdate.cost) - parseFloat(cost)
+
+
+        fetch(`http://localhost:5000/projects/${projectUpdate.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(projectUpdate)
+        })
+            .then((res) => res.json())
+            .then(() => {
+                setProject(projectUpdate)
+                setServices(serviceUpdate)
+                setMessage("Serviço Excluído")
+                setType("success")
+            })
+            .catch((err) => console.log(err))
+    }
 
     return (
         <>
@@ -166,6 +195,7 @@ const Project = () => {
                                 <ServiceCard
                                     key={service.id}
                                     name={service.name}
+                                    cost={service.cost}
                                     description={service.description}
                                     id={service.id}
                                     handleRemove={remove}
